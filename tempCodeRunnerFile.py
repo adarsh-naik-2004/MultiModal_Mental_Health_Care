@@ -1,23 +1,10 @@
-from flask import Flask, render_template, redirect, url_for
-from flask_mysqldb import MySQL
-
+from flask import Flask, request,render_template, redirect,session
+from flask_sqlalchemy import SQLAlchemy
+import bcrypt
 
 app = Flask(__name__)
-app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='adarshnaik@2004'
-app.config['MYSQL_DB']='mentalhealth'
-mysql=MySQL(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test1.db'
+db = SQLAlchemy(app)
+app.secret_key = 'secret_key'
 
-@app.route('/')
-def home():
-    cur=mysql.connection.cursor()
-    cur.execute('SELECT * FROM user ')
-    data=cur.fetchall()
-    cur.close()
-    return str(data)
-
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+class User(db.Model):

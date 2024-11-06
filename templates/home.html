@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWell - Mental Health Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <div class="min-h-screen flex flex-col bg-gray-50">
+        <nav class="bg-white shadow-md py-4 px-8 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 mr-2">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                MindWell
+            </a>
+            <div class="flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-primary">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-primary">About</a>
+                <a href="#documentation" class="text-gray-600 hover:text-primary">Documentation</a>
+                <a href="#feedback" class="text-gray-600 hover:text-primary">Feedback</a>
+                <button class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="flex-grow container mx-auto px-8 py-12">
+            <header class="text-center mb-20">
+                <h1 class="text-6xl font-bold text-primary mb-6">Mental Health Services</h1>
+                <p class="text-2xl text-gray-600 mb-10">Your well-being is our priority</p>
+                <div class="flex justify-center space-x-6">
+                    <button class="btn btn-outline rounded-full px-8">Learn More</button>
+                    <button class="btn rounded-full px-8">Get Started</button>
+                </div>
+            </header>
+
+            <section class="mb-24">
+                <div class="grid grid-cols-3 gap-12 mb-16">
+                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg p-8 text-white text-center">
+                        <h3 class="text-2xl font-semibold mb-4">24/7 Support</h3>
+                        <p class="text-lg">Always here when you need us</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-500 to-teal-600 rounded-lg p-8 text-white text-center">
+                        <h3 class="text-2xl font-semibold mb-4">Personalized Care</h3>
+                        <p class="text-lg">Tailored to your unique needs</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg p-8 text-white text-center">
+                        <h3 class="text-2xl font-semibold mb-4">Expert Therapists</h3>
+                        <p class="text-lg">Qualified professionals at your service</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">How We Can Help</h2>
+                    <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                        Our comprehensive approach to mental health combines cutting-edge technology with compassionate care to provide you with the support you deserve.
+                    </p>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-3 gap-12 mb-24">
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform transition-all duration-300 hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <div class="text-6xl mb-6">🧠</div>
+                        <h2 class="text-3xl font-semibold text-primary mb-4">Check Mental Health</h2>
+                        <p class="text-lg text-gray-600 mb-6">Take a quick assessment to understand your mental well-being and get personalized recommendations.</p>
+                    </div>
+                    <button class="btn w-full rounded-full">Start Assessment</button>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform transition-all duration-300 hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <div class="text-6xl mb-6">💬</div>
+                        <h2 class="text-3xl font-semibold text-primary mb-4">AI Chatbot</h2>
+                        <p class="text-lg text-gray-600 mb-6">Talk to our AI-powered chatbot for immediate support, guidance, and coping strategies.</p>
+                    </div>
+                    <button class="btn w-full rounded-full">Chat Now</button>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center transform transition-all duration-300 hover:scale-105 flex flex-col justify-between">
+                    <div>
+                        <div class="text-6xl mb-6">👥</div>
+                        <h2 class="text-3xl font-semibold text-primary mb-4">Online Therapy</h2>
+                        <p class="text-lg text-gray-600 mb-6">Connect with licensed therapists for professional help from the comfort of your home.</p>
+                    </div>
+                    <button class="btn w-full rounded-full">Book Session</button>
+                </div>
+            </div>
+
+            <section id="feedback" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg shadow-lg p-16 mb-24 relative overflow-hidden">
+                <div class="absolute inset-0 bg-pattern opacity-10"></div>
+                <div class="relative z-10">
+                    <h2 class="text-5xl font-bold mb-12 text-center">Get In Touch</h2>
+                    <div class="grid grid-cols-2 gap-16">
+                        <div class="space-y-8">
+                            <h3 class="text-3xl font-semibold mb-6">We're here to help</h3>
+                            <p class="text-xl leading-relaxed">
+                                Our team of mental health professionals is dedicated to providing you with the best possible care and support.
+                                Whether you have questions about our services or need assistance, we're just a message away.
+                            </p>
+                            <div class="flex items-center space-x-4 text-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                                <span class="font-semibold">support@mindwell.com</span>
+                            </div>
+                        </div>
+                        <form class="space-y-6">
+                            <input type="text" placeholder="Your Name" class="w-full bg-white bg-opacity-20 placeholder-white placeholder-opacity-70 border-0 rounded-full py-3 px-6 text-lg focus:ring-2 focus:ring-white">
+                            <input type="email" placeholder="Email Address" class="w-full bg-white bg-opacity-20 placeholder-white placeholder-opacity-70 border-0 rounded-full py-3 px-6 text-lg focus:ring-2 focus:ring-white">
+                            <input type="tel" placeholder="Phone Number" class="w-full bg-white bg-opacity-20 placeholder-white placeholder-opacity-70 border-0 rounded-full py-3 px-6 text-lg focus:ring-2 focus:ring-white">
+                            <textarea placeholder="Your Message" class="w-full bg-white bg-opacity-20 placeholder-white placeholder-opacity-70 border-0 rounded-3xl py-3 px-6 text-lg focus:ring-2 focus:ring-white" rows="4"></textarea>
+                            <button type="submit" class="btn w-full bg-white text-purple-600 hover:bg-opacity-90 rounded-full py-4 px-8 font-semibold text-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+                                <span>Send Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-16">
+            <div class="container mx-auto px-8">
+                <div class="grid grid-cols-4 gap-12 mb-12">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-6">MindWell</h3>
+                        <p class="text-lg">Empowering minds, enriching lives. Your journey to better mental health starts here.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-6">Quick Links</h4>
+                        <ul class="space-y-4 text-lg">
+                            <li><a href="#" class="hover:text-gray-300 transition-colors">Home</a></li>
+                            <li><a href="#" class="hover:text-gray-300 transition-colors">About Us</a></li>
+                            <li><a href="#" class="hover:text-gray-300 transition-colors">Services</a></li>
+                            <li><a href="#" class="hover:text-gray-300 transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-6">Our Team</h4>
+                        <ul class="space-y-4 text-lg">
+                            <li>Adarsh Manjunath Naik</li>
+                            <li>Krishna Agrawal</li>
+                            <li>Aryan Singh</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold mb-6">Connect With Us</h4>
+                        <div class="flex space-x-6">
+                            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-purple-500 pt-8 text-center">
+                    <p class="text-lg">&copy; 2024 MindWell. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
+</body>
+</html>

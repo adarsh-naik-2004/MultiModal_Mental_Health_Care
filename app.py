@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test1.db'
 db = SQLAlchemy(app)
 app.secret_key = 'secret_key'
 
@@ -59,18 +59,18 @@ def login():
         
         if user and user.check_password(password):
             session['email'] = user.email
-            return redirect('/dashboard')
+            return redirect('/home')
         else:
             return render_template('login.html',error='Invalid user')
 
     return render_template('login.html')
 
 
-@app.route('/dashboard')
+@app.route('/home')
 def dashboard():
     if session['email']:
         user = User.query.filter_by(email=session['email']).first()
-        return render_template('dashboard.html',user=user)
+        return render_template('result.html',user=user)
     
     return redirect('/login')
 
