@@ -70,13 +70,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Animate the submit button
         const submitBtn = this.querySelector('.submit-btn');
         submitBtn.classList.add('submitted');
-        submitBtn.textContent = 'Submitted!';
+        submitBtn.innerHTML = '<span><b>Submitted!</b></span>';
         
+        // Redirect to result.html after a short delay
         setTimeout(() => {
-            alert('Assessment submitted successfully!');
-            submitBtn.classList.remove('submitted');
-            submitBtn.innerHTML = '<span>Submit Assessment</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
-        }, 2000);
+            window.location.href = 'result.html';
+        }, 1000);
     });
 
     // Add subtle animation to the form on load

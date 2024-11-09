@@ -1,6 +1,8 @@
 from flask import Flask, request,render_template, redirect,session
 from flask_sqlalchemy import SQLAlchemy
+from assessment import MultiModalMentalHealthModel
 import bcrypt
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test1.db'
@@ -70,9 +72,29 @@ def login():
 def dashboard():
     if session['email']:
         user = User.query.filter_by(email=session['email']).first()
-        return render_template('result.html',user=user)
+        return render_template('home.html',user=user)
     
     return redirect('/login')
+
+@app.route('/health.html',methods=["GET","POST"])
+def first():
+    if request.method == 'POST':
+        feeling_text = request.form['feelingText']
+        audio_file = request.files['audioFile']
+        audio_file.save(os.path.join('uploads', audio_file.filename))
+        audio_path = os.path.join('uploads', audio_file.filename)
+
+        model = MultiModalMentalHealthModel()
+        prediction = model.predict(feeling_text, audio_path)
+        os.remove(audio_path)  # Delete the uploaded audio file
+
+        return render_template('result.html', prediction=prediction)
+    
+    return render_template('health.html')
+
+@app.route('/result.html',methods=["GET","POST"])
+def result():
+    return render_template('result.html')
 
 @app.route('/logout')
 def logout():
