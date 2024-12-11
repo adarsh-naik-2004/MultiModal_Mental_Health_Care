@@ -14,25 +14,26 @@
             <p>Your mental well-being matters. Let's check in.</p>
         </header>
         <main>
-            <form id="assessmentForm">
+            <form method="post" action="{{ url_for('health') }}" enctype="multipart/form-data">
                 <div class="input-group">
-                    <label for="feelingText">Express your thoughts:</label>
-                    <textarea id="feelingText" name="feelingText" rows="4" placeholder="I'm feeling..."></textarea>
+                    <label for="feeling_text">Express your thoughts:</label>
+                    <textarea id="feeling_text" name="feeling_text" rows="4" placeholder="I'm feeling..." required></textarea>
                 </div>
                 <div class="input-group">
-                    <label>Or share your voice:</label>
+                    <label for="audio_file">Or share your voice:</label>
                     <div class="audio-controls">
                         <button type="button" id="recordButton" class="btn">
                             <span class="btn-text">Start Recording</span>
-                            <span class="btn-icon">🎙️</span>
+                            <span class="btn-icon" aria-hidden="true">🎙️</span>
                         </button>
-                        <div id="audioVisualizer" class="audio-visualizer"></div>
+                        <div id="audioVisualizer" class="audio-visualizer" aria-hidden="true"></div>
                     </div>
                     <audio id="audioPlayback" controls style="display: none;"></audio>
+                    <input type="file" id="audio_file" name="audio_file" accept="audio/*" style="display: none;">
                 </div>
                 <button type="submit" class="btn submit-btn">
-                    <span><b>Submit Assessment</b></span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <span>Submit Assessment</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
