@@ -20,15 +20,17 @@ from tensorflow.keras.utils import custom_object_scope
 app = Flask(__name__)
 
 
+mail = Mail(app)
+
 # Email configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'adarshnaik270@gmail.com'  # Ensure these are set in your environment
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = 'adarshnaik270@gmail.com'  
 app.config['MAIL_PASSWORD'] = 'adarshnaik@2004'
 
-mail = Mail(app)
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test1.db'
 db = SQLAlchemy(app)
@@ -71,6 +73,8 @@ def predict_sentiment(text):
     logits = model.predict(preprocessed_text)
     probabilities = tf.nn.sigmoid(logits).numpy()
     score = np.mean(probabilities) * 100
+    if score<1:
+        score*=10
     return score
 
 
@@ -137,7 +141,7 @@ def get_response(intents_list, intents_json):
 
 
 
-def audio_to_text(audio_file):
+def audio_model(audio_file):
     recognizer = sr.Recognizer()
     with sr.AudioFile(audio_file) as source:
         audio = recognizer.record(source)
@@ -153,9 +157,8 @@ def audio_to_text(audio_file):
     return text
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+print([User.emailwell])
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -172,7 +175,7 @@ def register():
 
     return render_template('register.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
@@ -205,7 +208,7 @@ def health():
         # Handle audio file if present
         audio_file = request.files.get('audio_file')
         if audio_file:
-            feeling_text = audio_to_text(audio_file)
+            feeling_text = audio_model(audio_file)
         
         # Get sentiment score
         if feeling_text:
@@ -222,18 +225,20 @@ def health():
 def result():
     text_score = request.args.get('text_score', default=0.0, type=float)
     if session.get('email'):
-        user = User.query.filter_by(email=session['email']).first()
+        
         if text_score < 40:
-            send_low_score_email(user.name, user.emailwell)
+            send_low_score_email(User.name, User.emailwell)
 
     return render_template('result.html', text_score=text_score)
 
 def send_low_score_email(user_name, well_wisher_email):
     """Send an email to the well-wisher if the test score is below 40%."""
+    print({well_wisher_email})
     try:
         msg = Message(
             "Attention Needed: Low Score Alert",
-            recipients=[well_wisher_email]
+            app.config['MAIL_USERNAME'],
+            [well_wisher_email]
         )
         msg.body = f"Dear Well-wisher, \n\nPlease take care of your relation {user_name}. Their recent test score was below the required threshold.\n\nBest Regards,\nYour App Team"
         

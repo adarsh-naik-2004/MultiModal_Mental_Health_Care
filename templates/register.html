@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Minor Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindWell - Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
-    <!-- NAVBAR CREATION -->
     <header class="header">
         <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Help</a>
+            <a href="#" class="logo">MindWell</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Help</a>
+            </div>
         </nav>
-        <form action="" class="search-bar">
-            <input type="text" placeholder="Search...">
-            <button><i class='bx bx-search'></i></button>
-        </form>
     </header>
 
-    <!-- SIGN UP FORM CREATION -->
-    <div class="background"></div>
-    <div class="container">
-        <div class="item">
-            <h2 class="logo"><i></i>Hello There</h2>
-            <div class="text-item">
-                <h2>Welcome to our <br><span>
-                    Minor Project
-                </span></h2>
-                <p>Ready to experience best mental health care avaialble online!</p>
-                <div class="social-icon">
+    <main>
+        <div class="container">
+            <div class="info-section">
+                <h2>Welcome to MindWell</h2>
+                <p>Experience the best mental health care available online!</p>
+                <div class="social-icons">
                     <a href="#"><i class='bx bxl-facebook'></i></a>
                     <a href="#"><i class='bx bxl-twitter'></i></a>
                     <a href="#"><i class='bx bxl-youtube'></i></a>
@@ -40,41 +33,38 @@
                     <a href="#"><i class='bx bxl-linkedin'></i></a>
                 </div>
             </div>
-        </div>
-        <div class="login-section">
-            <div class="form-box login">
+            <div class="register-section">
                 <form action="/register" method="POST">
                     <h2>Sign Up</h2>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-user'></i></span>
                         <input type="text" required id="name" name="name">
-                        <label >Name</label>
+                        <label for="name">Name</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-envelope'></i></span>
                         <input type="email" required id="email" name="email">
-                        <label >Email</label>
+                        <label for="email">Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-envelope'></i></span>
-                        <input type="email" required id="email" name="emailwell">
-                        <label >Email of a Well Wisher</label>
+                        <input type="email" required id="emailwell" name="emailwell">
+                        <label for="emailwell">Email of a Well Wisher</label>
                     </div>
                     <div class="input-box">
-                        <span class="icon"><i class='bx bxs-lock-alt' ></i></span>
-                        <input type="password" required  id="pwd" name="password">
-                        <label>Password</label>
+                        <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                        <input type="password" required id="pwd" name="password">
+                        <label for="pwd">Password</label>
                     </div>
-                    <button class="btn">Register</button>
+                    <button type="submit" class="btn">Register</button>
                     <div class="create-account">
-                        <p>Already Have An Account ?<a href="/login" class="register-link">Sign In</a></p>
+                        <p>Already have an account? <a href="/" class="login-link">Sign In</a></p>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </main>
 
     <script src="{{ url_for('static', filename='login.js') }}"></script>
 </body>
-
 </html>
